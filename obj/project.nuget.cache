@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "doIB1zSKCv4=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\91960\\source\\repos\\claro\\Claro.AuthService\\Claro.AuthService.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\91960\\.nuget\\packages\\microsoft.aspnetcore.openapi\\9.0.0\\microsoft.aspnetcore.openapi.9.0.0.nupkg.sha512",
+    "C:\\Users\\91960\\.nuget\\packages\\microsoft.openapi\\1.6.17\\microsoft.openapi.1.6.17.nupkg.sha512"
+  ],
+  "logs": []
+}
