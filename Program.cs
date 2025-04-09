@@ -21,7 +21,7 @@ builder.Services.AddSwaggerGen();
 
 // Add services to the container
 var jwtSettings = builder.Configuration.GetSection("JwtSettings");
-var key = Encoding.UTF8.GetBytes(jwtSettings["Key"]);
+var key = Encoding.ASCII.GetBytes(jwtSettings["Key"]);
 
 // Add Identity services 
 //builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
@@ -65,11 +65,21 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 //builder.Services.AddSwaggerGen();
 
+// Add CORS Policy
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowClaroUI",
+        policy => policy.WithOrigins("http://localhost:4200") // Update to your Angular domain
+                        .AllowAnyHeader()
+                        .AllowAnyMethod());
+});
+
 var app = builder.Build();
 
+// Use CORS
+app.UseCors("AllowClaroUI");
 
-
-    app.UseSwagger();
+app.UseSwagger();
     app.UseSwaggerUI();
 
 app.UseAuthentication();

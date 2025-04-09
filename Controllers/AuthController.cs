@@ -53,7 +53,7 @@ namespace Claro.AuthService.Api.Controllers
             if (token == null)
                 return Unauthorized();
 
-            return Ok(new { Token = token });
+            return Ok(token);
         }
     }
 }
