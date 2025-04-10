@@ -1,5 +1,20 @@
-﻿################################################################################
-# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
-################################################################################
+﻿# User-specific files
+.vs/
+.vscode/
+.idea/
 
-/.vs
+# Build results
+bin/
+obj/
+
+# Windows Installer files
+*.cab
+*.msi
+*.msm
+*.msp
+
+# User-specific files for VS
+*.user
+*.userosscache
+*.suo
+*.userprefs

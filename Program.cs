@@ -1,3 +1,4 @@
+using Azure.Identity;
 using Claro.AuthService.Application.Helpers;
 using Claro.AuthService.Application.Interfaces;
 using Claro.AuthService.Application.Services;
@@ -8,12 +9,14 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using Azure.Security.KeyVault.Secrets;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
-builder.Services.AddOpenApi();
+//builder.Services.AddOpenApi();
 
 //add swagger service
 builder.Services.AddEndpointsApiExplorer();
@@ -28,7 +31,9 @@ var key = Encoding.ASCII.GetBytes(jwtSettings["Key"]);
 //                .AddEntityFrameworkStores<ClaroAuthDbContext>()
 //                .AddDefaultTokenProviders();
 
-
+//load keyvalut from azure
+var keyVaultEndpoint = builder.Configuration["KeyVaultUrl"];
+//builder.Configuration.ad (keyVaultEndpoint, new DefaultAzureCredential());
 
 builder.Services.AddAuthentication(options =>
 {
@@ -90,7 +95,7 @@ app.UseAuthorization();
 //{
 //    app.MapOpenApi();
 //}
-app.MapOpenApi();
+//app.MapOpenApi();
 
 app.UseHttpsRedirection();
 
